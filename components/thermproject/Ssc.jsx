@@ -1,9 +1,16 @@
 import React from 'react';
+import { SEO } from '../SEO'; 
 import { Link } from 'react-router-dom';
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function ScrapedSurface() {
   return (
+    <>
+    <SEO 
+  title="Scraped Surface Evaporators" 
+  description="Mechanically driven thin-film thermal evaporators built to process high-viscosity materials, sticky matrices, and highly temperature-sensitive organic concentrates."
+  url="/thermproject/ssc"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function ScrapedSurface() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

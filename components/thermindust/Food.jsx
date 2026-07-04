@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../SEO'; 
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, Milk, ShieldCheck, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function Food() {
   return (
+    <>
+    <SEO 
+  title="Food & Dairy Processing Infrastructure" 
+  description="Low-temperature vacuum evaporation and fallback thermal profiles designed to concentrate milk, whey, and protein matrices without thermal degradation."
+  url="/thermindust/food-dairy"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         {/* Header Block */}
@@ -171,5 +178,6 @@ export default function Food() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

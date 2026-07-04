@@ -1,9 +1,16 @@
 import React from 'react';
+import { SEO } from '../SEO'; 
 import { Link } from 'react-router-dom';
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function PaddleDryer() {
   return (
+    <>
+    <SEO 
+  title="Industrial Paddle Dryers" 
+  description="Heavy-duty indirect contact thermal dryers designed to process high-volume municipal sludges, crystalline cakes, and hazardous chemical residues with low off-gas footprints."
+  url="/thermproject/paddle"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function PaddleDryer() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

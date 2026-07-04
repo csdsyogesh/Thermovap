@@ -1,9 +1,16 @@
 import React from 'react';
+import { SEO } from '../SEO'; 
 import { Link } from 'react-router-dom';
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function MultiStageDryer() {
   return (
+    <>
+    <SEO 
+  title="Multi Stage Dryers (MSD)" 
+  description="Advanced multi-tier dehydration loops combining spray drying headers and integrated fluid bed bases to manufacture high-solubility agglomerated particles."
+  url="/thermproject/multi"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function MultiStageDryer() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../SEO'; 
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function AgitatedThinFilm() {
   return (
+    <>
+    <SEO 
+  title="Agitated Thin Film Dryers (ATFD)" 
+  description="Industrial vertical thin-film dehydration systems engineered with precision scraping blades to convert high-TDS concentrates straight into dry powder solids."
+  url="/thermproject/atfd"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function AgitatedThinFilm() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

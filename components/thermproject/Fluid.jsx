@@ -1,9 +1,16 @@
 import React from 'react';
+import { SEO } from '../SEO'; 
 import { Link } from 'react-router-dom';
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function FluidBed() {
   return (
+    <>
+    <SEO 
+  title="Fluid Bed Dryers (FBD)" 
+  description="High-duty convective fluidization thermal dryers engineered to handle granular solids, crystalline matrices, and dairy-food powders with uniform moisture reduction."
+  url="/thermproject/fluid"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -128,6 +135,7 @@ export default function FluidBed() {
           </div>
         </div>
       </footer>
-    </div>
+    </div> 
+    </>
   );
 }

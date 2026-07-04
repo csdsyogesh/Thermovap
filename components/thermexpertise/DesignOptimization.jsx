@@ -1,9 +1,16 @@
 import React from 'react';
+import { SEO } from '../SEO'; 
 import { Link } from 'react-router-dom';
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, Zap, Activity } from 'lucide-react';
 
 export default function DesignOptimization() {
   return (
+    <>
+    <SEO 
+  title="Custom Process Design & Performance Optimization" 
+  description="Custom thermal engineering and system optimization layouts designed to maximize plant thermodynamic efficiency and steam economy limits."
+  url="/expertise/design-optimization"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -81,5 +88,6 @@ export default function DesignOptimization() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

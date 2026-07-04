@@ -1,9 +1,16 @@
 import React from 'react';
+import { SEO } from '../SEO'; 
 import { Link } from 'react-router-dom';
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function ForcedCirculation() {
   return (
+    <>
+    <SEO 
+  title="Forced Circulation Evaporators" 
+  description="High-velocity, pressurized boiling suppression evaporator systems engineered to concentrate heavily fouling industrial fluids, crystalline slurries, and high-TDS reject streams."
+  url="/thermproject/forced"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function ForcedCirculation() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../SEO'; 
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, Leaf, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function AgroDistilleries() {
   return (
+    <>
+    <SEO 
+  title="Agro, Distillery & Spent Wash Recovery Systems" 
+  description="Value-recovery cascading evaporators designed to process distillery slops and spent wash into animal feed or premium bio-fertilizers."
+  url="/thermindust/agro-distilleries"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function AgroDistilleries() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

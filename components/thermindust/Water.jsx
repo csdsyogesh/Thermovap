@@ -1,9 +1,16 @@
 import React from 'react';
+import { SEO } from '../SEO'; 
 import { Link } from 'react-router-dom';
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, GlassWater, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function WaterTreatment() {
   return (
+    <>
+    <SEO 
+  title="Industrial Water Treatment Evaporators & ETP/STP" 
+  description="Advanced environmental process loops combining high-velocity brine concentrators and crystallizers to recover pure low-conductivity distillate."
+  url="/thermindust/water-treatment"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function WaterTreatment() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

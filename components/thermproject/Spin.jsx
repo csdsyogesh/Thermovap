@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../SEO'; 
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function SpinFlash() {
   return (
+    <>
+    <SEO 
+  title="Spin Flash Dryers" 
+  description="High-shear flash dehydration systems engineered to pulverize and dry highly cohesive filter press cakes, dense chemical pigments, and industrial wastewater sludges."
+  url="/thermproject/spin"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function SpinFlash() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../SEO'; 
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, Shirt, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function TextilesDyeing() {
   return (
+<>
+    <SEO 
+  title="Textile & Dyeing Effluent Treatment Loops" 
+  description="High-recovery thermal separation systems engineered to process chemical dye rejects, isolate high-TDS salts, and achieve zero liquid discharge (ZLD)."
+  url="/thermindust/textiles-dyeing"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function TextilesDyeing() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

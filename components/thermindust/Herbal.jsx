@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../SEO'; 
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, Vegan, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function HerbalCatechu() {
   return (
+    <>
+    <SEO 
+  title="Herbal, Extraction & Catechu Evaporation Systems" 
+  description="Specialized high-vacuum thermal concentration networks engineered to safely process delicate organic plant extracts and high-purity catechu solutions."
+  url="/thermindust/herbal-catechu"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function HerbalCatechu() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

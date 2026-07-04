@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../SEO'; 
 import { ArrowLeft, HelpCircle, Wrench, ShieldAlert, Activity } from 'lucide-react';
 
 export default function Troubleshooting() {
-  return (
+   return (
+      <>
+    <SEO 
+  title="Industrial Plant Troubleshooting & Stabilization" 
+  description="Rapid process interventions to diagnose and resolve tube scaling, vapor head foaming, and low steam economy bottlenecks in active plants."
+  url="/expertise/troubleshooting"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         {/* Navigation Header */}
@@ -83,5 +90,6 @@ export default function Troubleshooting() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

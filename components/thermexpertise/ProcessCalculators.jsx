@@ -1,9 +1,15 @@
 import React from 'react';
+import { SEO } from '../SEO'; 
 import { Link } from 'react-router-dom';
 import { ArrowLeft, HelpCircle, Calculator, Activity, Layers } from 'lucide-react';
 
 export default function ProcessCalculates() {
   return (
+    <><SEO 
+  title="Thermal Design & Process Calculations Support" 
+  description="Rigorous mathematical modeling, industrial heat balance grids, and equipment sizing datasets compiled to verify mass balances before fabrication."
+  url="/expertise/process-calculations"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         {/* Navigation Header */}
@@ -83,5 +89,6 @@ export default function ProcessCalculates() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

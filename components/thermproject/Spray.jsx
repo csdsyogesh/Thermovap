@@ -1,9 +1,16 @@
 import React from 'react';
+import { SEO } from '../SEO'; 
 import { Link } from 'react-router-dom';
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function SprayDryer() {
   return (
+    <>
+    <SEO 
+  title="Industrial Spray Dryers" 
+  description="High-capacity atomization flash drying systems engineered to transform low-viscosity liquid feeds and milk concentrates directly into high-purity, free-flowing powders."
+  url="/thermproject/spray"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function SprayDryer() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

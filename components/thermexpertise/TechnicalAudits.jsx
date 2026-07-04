@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../SEO'; 
 import { ArrowLeft, HelpCircle, ClipboardCheck, Eye, ShieldAlert } from 'lucide-react';
 
 export default function TechnicalAudits() {
   return (
+    <><SEO 
+  title="On-Site & Remote Technical Energy Audits" 
+  description="Comprehensive industrial plant auditing services to trace enthalpy pathways, map local vacuum decay, and identify energy saving workflows."
+  url="/expertise/technical-audits"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -81,5 +87,6 @@ export default function TechnicalAudits() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

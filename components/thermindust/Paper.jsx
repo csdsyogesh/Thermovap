@@ -1,9 +1,16 @@
 import React from 'react';
+import { SEO } from '../SEO'; 
 import { Link } from 'react-router-dom';
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, ScrollText, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function PulpPaper() {
   return (
+    <>
+    <SEO 
+  title="Pulp & Paper Mill Black Liquor Evaporators" 
+  description="High-efficiency multiple-effect evaporator layouts optimized to manage extreme viscosities and maximize solid concentration in black liquor."
+  url="/thermindust/pulp-paper"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function PulpPaper() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

@@ -1,9 +1,16 @@
 import React from 'react';
+import { SEO } from '../SEO.jsx'; 
 import { Link } from 'react-router-dom';
 import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, BarChart3, ShieldAlert } from 'lucide-react';
 
 export default function ZldPlant() {
   return (
+    <>
+    <SEO 
+  title="Zero Liquid Discharge (ZLD) Plants" 
+  description="Completely integrated industrial wastewater reclamation networks combining thermal brine concentration and crystallization to achieve total liquid containment compliance."
+  url="/thermproject/zld"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -129,5 +136,6 @@ export default function ZldPlant() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
