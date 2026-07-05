@@ -1,9 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../SEO';
 import { ArrowLeft, HelpCircle, Settings, Grid, Activity, Layers } from 'lucide-react';
 
 export default function ProcessEquipment() {
   return (
+    <>
+    <SEO 
+  title="Industrial Thermal Sizing, LMTD Sizing & Geometry Design" 
+  description="Advanced process equipment rating and engineering. Optimization of triangular tube pitch geometry, metallurgy selection (MOC), and boiling point elevation (BPE) profiles."
+  url="/services/process-equipment"
+/>
+   
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -105,5 +113,6 @@ export default function ProcessEquipment() {
         </div>
       </footer>
     </div>
+     </>
   );
 }

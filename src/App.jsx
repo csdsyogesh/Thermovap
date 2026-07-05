@@ -15,8 +15,13 @@ import { SiteFooter } from '../components/Site-footer.jsx';
 
 // 🔗 Services Subpages
 import EvaporationSystems from '../components/thermservice/Evaporation.jsx';
-import IndustrialDryers from '../components/thermservice/Dryers.jsx';
-import ZldSolutionsPage from '../components/thermservice/Zld.jsx';
+import Sprayserv from '../components/thermservice/Sprayserv.jsx';
+import Atfdserv from '../components/thermservice/Atfdserv.jsx';
+import Fluidserv from '../components/thermservice/Fluidserv.jsx';
+import Multistage from '../components/thermservice/Multistage.jsx';
+import Spinflash from '../components/thermservice/Spinflash.jsx';
+import Techaudit from '../components/thermservice/Techaudit.jsx';
+import ZldSolutionsPage from '../components/thermservice/Zldserv.jsx';
 import ProcessEquipment from '../components/thermservice/ProcessEquipment.jsx';
 
 // 🔗 Industries Subpages (Sitting inside thermindust folder)
@@ -100,8 +105,13 @@ export default function App() {
 
             {/* 🛠️ Services Subpage View Routes */}
             <Route path="/services/evaporation-systems" element={<EvaporationSystems />} />
-            <Route path="/services/industrial-dryers" element={<IndustrialDryers />} />
+            <Route path="/services/spray-dryers" element={<Sprayserv />} />
             <Route path="/services/zld-solutions" element={<ZldSolutionsPage />} />
+            <Route path="/services/fluid-bed-dryers" element={<Fluidserv/>} />
+            <Route path="/services/atfd-systems" element={<Atfdserv />} />
+            <Route path="/services/spin-flash-dryers" element={<Spinflash />} />
+            <Route path="/services/multi-stage-dryers" element={<Multistage />} />
+            <Route path="/services/technical-auditing" element={<Techaudit />} />
             <Route path="/services/process-equipment" element={<ProcessEquipment />} />
 
             {/* 🌟 Thermindust Sector Routing Layer (Matched to lowercase card hrefs) */}

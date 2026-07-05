@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {SEO} from '../SEO'
 import { ArrowLeft, HelpCircle, Cpu, Activity, ShieldAlert, BarChart3 } from 'lucide-react';
 
 export default function EvaporationSystems() {
   return (
+    <>
+    <SEO 
+  title="Multi-Effect Evaporators & MVR/TVR System Design | Thermovap" 
+  description="Industrial thermal engineering for Multi-Effect Evaporators (MEE). We optimize specific steam consumption (SSC) using TVR & MVR vapor recompression integration physics."
+  url="/services/evaporation-systems"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -102,5 +109,6 @@ export default function EvaporationSystems() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

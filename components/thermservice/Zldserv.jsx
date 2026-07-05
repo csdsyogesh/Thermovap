@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../SEO';
 import { ArrowLeft, HelpCircle, Recycle, Droplet, ShieldCheck, Activity } from 'lucide-react';
 
 export default function ZldSolutionsPage() {
   return (
+    <>
+<SEO 
+  title="Zero Liquid Discharge (ZLD) Plant Engineering & Crystallizers" 
+  description="Turnkey Zero Liquid Discharge (ZLD) industrial wastewater systems. High-TDS brine concentration loop sizing paired with forced circulation crystallizers to eliminate scaling."
+  url="/services/zld-solutions"
+/>
     <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col justify-between">
       <div>
         <header className="bg-card border-b border-border sticky top-0 z-50">
@@ -105,5 +112,6 @@ export default function ZldSolutionsPage() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
