@@ -266,7 +266,7 @@ export function Services() {
               
               {/* Document 1: Company Profile */}
               <a
-                href={`${baseUrl}Companyprofile_thermovap.pdf`}
+                href={`${baseUrl}Companyprofile_thermovapengineering.pdf`}
                 download="Companyprofile_thermovap.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
