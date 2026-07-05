@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion' // Switched back to framer-motion matching your environment setup
+import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Menu, Phone, X } from 'lucide-react'
 
 function WhatsAppIcon({ className }) {
@@ -39,12 +39,12 @@ export function SiteHeader() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Fix: Handles navigating to standard pages and sections on the homepage cleanly
   const handleNavigation = (e, href) => {
-    e.preventDefault()
     setOpen(false)
 
+    // Handle home button target jumps
     if (href === '/') {
+      e.preventDefault()
       if (location.pathname === '/') {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
@@ -53,37 +53,35 @@ export function SiteHeader() {
       return
     }
 
+    // Anchor-link behavior logic
     if (href.startsWith('/#')) {
+      e.preventDefault() // Only halt execution if it's a home scroll section item
       const elementId = href.replace('/#', '')
       
       if (location.pathname === '/') {
-        // We are on the homepage, scroll down seamlessly
         const element = document.getElementById(elementId)
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' })
         }
       } else {
-        // We are on another page (like /blog), route back to homepage with anchor point tag
         navigate('/', { state: { scrollToId: elementId } })
       }
-    } else {
-      // Normal routing for external tracks like /blog
-      navigate(href)
-    }
+    } 
+    // CRITICAL FIX: If it's a real separate page like /blog, DO NOT call e.preventDefault(). 
+    // Let the standard click sequence execute naturally.
   }
 
-  // Effect helper to handle incoming scroll intents from secondary subpages back to home
   useEffect(() => {
     if (location.pathname === '/' && location.state?.scrollToId) {
       const elementId = location.state.scrollToId
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         const element = document.getElementById(elementId)
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' })
         }
-      }, 100)
-      // Clear history token state array mapping
+      }, 150)
       window.history.replaceState({}, document.title)
+      return () => clearTimeout(timer)
     }
   }, [location])
 
@@ -187,12 +185,13 @@ export function SiteHeader() {
             className="overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col gap-1 px-4 py-4">
+              {/* FIXED MOBILE ITERATION BLOCK */}
               {NAV.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  onTouchStart={(e) => handleNavigation(e, item.href)}
-                  className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                  onClick={(e) => handleNavigation(e, item.href)} // Reverted to unified click strategy
+                  className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground active:bg-secondary"
                 >
                   {item.label}
                 </a>
@@ -212,7 +211,7 @@ export function SiteHeader() {
               {/* Mail Row - Mobile */}
               <a
                 href="mailto:thermovapengineering@gmail.com"
-                className="mt-2 flex items-center justify-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-all duration-200"
+                className="mt-2 flex items-center justify-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-semibold text-muted-foreground"
               >
                 <Mail className="h-4 w-4 text-primary" />
                 Email Us Directly
