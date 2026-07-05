@@ -150,6 +150,9 @@ const TECHNICAL_CONSULTING_DETAILED = [
 ];
 
 export function Services() {
+  // Safe detection handler for standard Vite setups to avoid breaking on root domains
+  const baseUrl = import.meta.env?.BASE_URL || '/';
+
   return (
     <section id="services" className="relative py-20 sm:py-28 bg-background text-foreground overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-24">
@@ -173,53 +176,56 @@ export function Services() {
 
         {/* 1. Core Services: Comprehensive Grid */}
         <div className="grid gap-8 lg:grid-cols-1">
-          {CORE_SERVICES.map((service, index) => (
-            <div
-              id={service.id}
-              key={service.id || index}
-              className="scroll-mt-28"
-            >
-              <Reveal delay={index}>
-                <div className="group rounded-3xl border border-border bg-card p-8 shadow-xs transition-colors hover:border-primary/40 grid md:grid-cols-12 gap-6 items-start">
+          {CORE_SERVICES.map((service, index) => {
+            const IconComp = service.icon;
+            return (
+              <div
+                id={service.id}
+                key={service.id || index}
+                className="scroll-mt-28"
+              >
+                <Reveal delay={index}>
+                  <div className="group rounded-3xl border border-border bg-card p-8 shadow-xs transition-colors hover:border-primary/40 grid md:grid-cols-12 gap-6 items-start">
 
-                  {/* Left Block: Icon, Title and Long Desc */}
-                  <div className="md:col-span-8 space-y-4">
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
-                        <service.icon className="h-6 w-6" />
-                      </span>
-                      <h3 className="text-xl font-bold text-card-foreground tracking-tight">{service.title}</h3>
+                    {/* Left Block: Icon, Title and Long Desc */}
+                    <div className="md:col-span-8 space-y-4">
+                      <div className="flex items-center gap-3">
+                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                          <IconComp className="h-6 w-6" />
+                        </span>
+                        <h3 className="text-xl font-bold text-card-foreground tracking-tight">{service.title}</h3>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed text-justify">{service.desc}</p>
                     </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed text-justify">{service.desc}</p>
+
+                    {/* Right Block: Sizing Highlights list & Link */}
+                    <div className="md:col-span-4 h-full flex flex-col justify-between space-y-4 md:border-l md:border-border/60 md:pl-6">
+                      <div>
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Core Sizing Capabilities</h4>
+                        <ul className="space-y-2.5">
+                          {service.highlights.map((item, idx) => (
+                            <li key={idx} className="flex items-start text-xs text-card-foreground/90 font-medium leading-tight">
+                              <CheckCircle2 className="h-4 w-4 text-primary mr-2 shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="pt-4">
+                        <Link
+                          to={service.href}
+                          className="inline-flex h-9 items-center justify-center rounded-xl border border-border bg-background px-4 text-xs font-semibold text-primary shadow-xs hover:bg-muted/50 transition-colors"
+                        >
+                          Explore Full Technical Specifications &rarr;
+                        </Link>
+                      </div>
+                    </div>
+
                   </div>
-
-                  {/* Right Block: Sizing Highlights list & Link */}
-                  <div className="md:col-span-4 h-full flex flex-col justify-between space-y-4 md:border-l md:border-border/60 md:pl-6">
-                    <div>
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Core Sizing Capabilities</h4>
-                      <ul className="space-y-2.5">
-                        {service.highlights.map((item, idx) => (
-                          <li key={idx} className="flex items-start text-xs text-card-foreground/90 font-medium leading-tight">
-                            <CheckCircle2 className="h-4 w-4 text-primary mr-2 shrink-0 mt-0.5" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="pt-4">
-                      <Link
-                        to={service.href}
-                        className="inline-flex h-9 items-center justify-center rounded-xl border border-border bg-background px-4 text-xs font-semibold text-primary shadow-xs hover:bg-muted/50 transition-colors"
-                      >
-                        Explore Full Technical Specifications &rarr;
-                      </Link>
-                    </div>
-                  </div>
-
-                </div>
-              </Reveal>
-            </div>
-          ))}
+                </Reveal>
+              </div>
+            );
+          })}
         </div>
 
         {/* 2. Consulting & Technical Services */}
@@ -260,8 +266,10 @@ export function Services() {
               
               {/* Document 1: Company Profile */}
               <a
-                href="/Companyprofile_thermovap.pdf"
-                download
+                href={`${baseUrl}Companyprofile_thermovap.pdf`}
+                download="Companyprofile_thermovap.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-background p-4 shadow-xs hover:border-primary/40 hover:bg-muted/30 transition-all text-left"
               >
                 <div className="space-y-1">
@@ -275,8 +283,10 @@ export function Services() {
 
               {/* Document 2: E-Brochure */}
               <a
-                href="/E-Brochure_Thermovap.pdf"
-                download
+                href={`${baseUrl}E-Brochure_Thermovap.pdf`}
+                download="E-Brochure_Thermovap.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-background p-4 shadow-xs hover:border-primary/40 hover:bg-muted/30 transition-all text-left"
               >
                 <div className="space-y-1">
@@ -290,8 +300,10 @@ export function Services() {
 
               {/* Document 3: Project Portfolio */}
               <a
-                href="/Portfolio_thermovap.pdf"
-                download
+                href={`${baseUrl}Portfolio_thermovap.pdf`}
+                download="Portfolio_thermovap.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-background p-4 shadow-xs hover:border-primary/40 hover:bg-muted/30 transition-all text-left"
               >
                 <div className="space-y-1">
