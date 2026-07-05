@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { CheckCircle2 } from 'lucide-react'
-import { Reveal } from './reveal'
+import { Reveal } from './Reveal'
 
 const REASONS = [
   'Strong field experience in Thermal Design and  heat & mass transfer',
