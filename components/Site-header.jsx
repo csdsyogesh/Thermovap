@@ -40,35 +40,35 @@ export function SiteHeader() {
   }, [])
 
   const handleNavigation = (e, href) => {
+    e.preventDefault()
     setOpen(false)
 
-    // Handle home button target jumps
     if (href === '/') {
-      e.preventDefault()
       if (location.pathname === '/') {
         window.scrollTo({ top: 0, behavior: 'smooth' })
+        navigate('/', { hash: '' }) // Clear hash when going back to clean top home
       } else {
         navigate('/')
       }
       return
     }
 
-    // Anchor-link behavior logic
     if (href.startsWith('/#')) {
-      e.preventDefault() // Only halt execution if it's a home scroll section item
       const elementId = href.replace('/#', '')
-      
       if (location.pathname === '/') {
         const element = document.getElementById(elementId)
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' })
+          window.location.hash = elementId // Sync hash to update active nav state
         }
       } else {
         navigate('/', { state: { scrollToId: elementId } })
       }
-    } 
-    // CRITICAL FIX: If it's a real separate page like /blog, DO NOT call e.preventDefault(). 
-    // Let the standard click sequence execute naturally.
+      return
+    }
+
+    navigate(href)
+    window.scrollTo({ top: 0 })
   }
 
   useEffect(() => {
@@ -78,12 +78,23 @@ export function SiteHeader() {
         const element = document.getElementById(elementId)
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' })
+          window.location.hash = elementId
         }
       }, 150)
       window.history.replaceState({}, document.title)
       return () => clearTimeout(timer)
     }
   }, [location])
+
+  // Helper function to dynamically check if a link is currently active
+  const checkIsActive = (href) => {
+    const currentCombinedPath = location.pathname + location.hash
+    
+    if (href === '/') {
+      return location.pathname === '/' && !location.hash
+    }
+    return currentCombinedPath === href
+  }
 
   return (
     <motion.header
@@ -119,17 +130,26 @@ export function SiteHeader() {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-1">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={(e) => handleNavigation(e, item.href)}
-              className="group relative rounded-md px-3 py-2 text-sm font-bold text-muted-foreground transition-colors duration-200 hover:text-primary"
-            >
-              {item.label}
-              <span className="absolute inset-x-3 -bottom-px h-px origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
-            </a>
-          ))}
+          {NAV.map((item) => {
+            const isActive = checkIsActive(item.href)
+            return (
+              <Link
+                key={item.href}
+                to={item.href}
+                onClick={(e) => handleNavigation(e, item.href)}
+                className={`group relative rounded-md px-3 py-2 text-sm font-bold transition-colors duration-200 ${
+                  isActive 
+                    ? 'text-primary' 
+                    : 'text-muted-foreground hover:text-primary'
+                }`}
+              >
+                {item.label}
+                <span className={`absolute inset-x-3 -bottom-px h-px origin-left bg-primary transition-transform duration-300 ${
+                  isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                }`} />
+              </Link>
+            )
+          })}
         </div>
 
         {/* Action Controls */}
@@ -185,17 +205,21 @@ export function SiteHeader() {
             className="overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col gap-1 px-4 py-4">
-              {/* FIXED MOBILE ITERATION BLOCK */}
-              {NAV.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={(e) => handleNavigation(e, item.href)} // Reverted to unified click strategy
-                  className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground active:bg-secondary"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {NAV.map((item) => {
+                const isActive = checkIsActive(item.href)
+                return (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    onTouchStart={(e) => handleNavigation(e, item.href)}
+                    className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground active:bg-secondary ${
+                      isActive ? 'text-primary bg-secondary/40 font-bold' : 'text-muted-foreground'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              })}
 
               {/* WhatsApp Row - Mobile */}
               <a
