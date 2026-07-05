@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Blog from '../components/Blog.jsx';
-import 'katex/dist/katex.min.css';
 
 // Layout & Core Global UI
 import { SiteHeader } from '../components/Site-header.jsx';
