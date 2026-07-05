@@ -174,13 +174,15 @@ export function SiteHeader() {
             <span className="hidden sm:inline">WhatsApp</span>
           </a>
 
-          {/* Phone Button */}
+          {/* Phone Button - Now visible on mobile as an icon, full button on desktop */}
           <a
             href="tel:+919217227372"
-            className="hidden items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03] sm:flex"
+            title="Call Thermovap Engineering"
+            aria-label="Call Thermovap Engineering"
+            className="flex items-center justify-center gap-2 rounded-full bg-primary p-2 sm:px-4 sm:py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03]"
           >
             <Phone className="h-4 w-4" />
-            <span className="text-xs font-mono font-bold">+91 92172 27372</span>
+            <span className="hidden sm:inline font-mono font-bold">+91 92172 27372</span>
           </a>
 
           {/* Mobile Menu Toggle Button */}
