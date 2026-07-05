@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence } from 'motion/react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion' // Switched back to framer-motion matching your environment setup
 import { Mail, Menu, Phone, X } from 'lucide-react'
 
-// Styled raw SVG element for clean WhatsApp branding representation
 function WhatsAppIcon({ className }) {
   return (
     <svg
@@ -25,13 +24,13 @@ const NAV = [
   { label: 'Industries', href: '/#industries' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/#contact' },
-  
 ]
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -40,37 +39,69 @@ export function SiteHeader() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Helper function to resolve smooth scrolling for anchors or straight route navigation jumps
-  const handleNavigationClick = (href) => {
-    setOpen(false);
-    if (href.startsWith('/#')) {
-      const elementId = href.replace('/#', '');
+  // Fix: Handles navigating to standard pages and sections on the homepage cleanly
+  const handleNavigation = (e, href) => {
+    e.preventDefault()
+    setOpen(false)
+
+    if (href === '/') {
       if (location.pathname === '/') {
-        const element = document.getElementById(elementId);
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else {
+        navigate('/')
+      }
+      return
+    }
+
+    if (href.startsWith('/#')) {
+      const elementId = href.replace('/#', '')
+      
+      if (location.pathname === '/') {
+        // We are on the homepage, scroll down seamlessly
+        const element = document.getElementById(elementId)
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: 'smooth' })
         }
       } else {
-        // Shifting across a separate route profile page path context
-        window.location.href = href;
+        // We are on another page (like /blog), route back to homepage with anchor point tag
+        navigate('/', { state: { scrollToId: elementId } })
       }
+    } else {
+      // Normal routing for external tracks like /blog
+      navigate(href)
     }
-  };
+  }
+
+  // Effect helper to handle incoming scroll intents from secondary subpages back to home
+  useEffect(() => {
+    if (location.pathname === '/' && location.state?.scrollToId) {
+      const elementId = location.state.scrollToId
+      setTimeout(() => {
+        const element = document.getElementById(elementId)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+      // Clear history token state array mapping
+      window.history.replaceState({}, document.title)
+    }
+  }, [location])
 
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${scrolled
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled
           ? 'border-b border-border bg-background/85 backdrop-blur-xl'
           : 'border-b border-transparent bg-transparent'
-        }`}
+      }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         
         {/* Logo block */}
-        <Link to="/" className="flex items-center gap-2.5 shrink-0">
+        <Link to="/" onClick={(e) => handleNavigation(e, '/')} className="flex items-center gap-2.5 shrink-0">
           <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
             <img
               src='/Logo.jpg'
@@ -88,36 +119,19 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        {/* 🌟 Desktop Navigation: Now properly wrapped inside a structural layout block */}
+        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-1">
-          {NAV.map((item) => {
-            const isExternalPage = !item.href.startsWith('/#') && item.href !== '/';
-            return isExternalPage ? (
-              <Link
-                key={item.href}
-                to={item.href}
-                className="group relative rounded-md px-3 py-2 text-sm font-bold text-muted-foreground transition-colors duration-200 hover:text-primary"
-              >
-                {item.label}
-                <span className="absolute inset-x-3 -bottom-px h-px origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
-            ) : (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => {
-                  if (item.href.startsWith('/#')) {
-                    e.preventDefault();
-                    handleNavigationClick(item.href);
-                  }
-                }}
-                className="group relative rounded-md px-3 py-2 text-sm font-bold text-muted-foreground transition-colors duration-200 hover:text-primary"
-              >
-                {item.label}
-                <span className="absolute inset-x-3 -bottom-px h-px origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
-              </a>
-            );
-          })}
+          {NAV.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={(e) => handleNavigation(e, item.href)}
+              className="group relative rounded-md px-3 py-2 text-sm font-bold text-muted-foreground transition-colors duration-200 hover:text-primary"
+            >
+              {item.label}
+              <span className="absolute inset-x-3 -bottom-px h-px origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
+            </a>
+          ))}
         </div>
 
         {/* Action Controls */}
@@ -173,35 +187,16 @@ export function SiteHeader() {
             className="overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col gap-1 px-4 py-4">
-              {NAV.map((item) => {
-                const isExternalPage = !item.href.startsWith('/#') && item.href !== '/';
-                return isExternalPage ? (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    onClick={() => setOpen(false)}
-                    className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={(e) => {
-                      if (item.href.startsWith('/#')) {
-                        e.preventDefault();
-                        handleNavigationClick(item.href);
-                      } else {
-                        setOpen(false);
-                      }
-                    }}
-                    className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-                  >
-                    {item.label}
-                  </a>
-                );
-              })}
+              {NAV.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleNavigation(e, item.href)}
+                  className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                >
+                  {item.label}
+                </a>
+              ))}
 
               {/* WhatsApp Row - Mobile */}
               <a

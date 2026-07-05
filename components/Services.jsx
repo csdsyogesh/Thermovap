@@ -242,44 +242,67 @@ export function Services() {
 
         {/* E-Brochure Download Action Block */}
         <Reveal delay={2}>
-          <div className="relative bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border border-primary/20 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 rounded-3xl p-6 md:p-8 space-y-6">
             <div className="space-y-2 text-center md:text-left">
               <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[11px] font-semibold tracking-wider uppercase">
-                E-Brochure
+                Technical Repository
               </div>
-              <h3 className="text-lg font-bold text-card-foreground tracking-tight">Download Thermovap Engineering Capabilities Brochure</h3>
-              <p className="text-xs text-muted-foreground max-w-2xl leading-relaxed">
-                Access full heat-exchanger sizing parameters, multi-effect evaporation sizing metrics, and complete environmental zero liquid discharge technical blueprints directly.
+              <h3 className="text-xl font-bold text-card-foreground tracking-tight">
+                Download Thermovap Engineering Documentation
+              </h3>
+              <p className="text-xs text-muted-foreground max-w-3xl leading-relaxed">
+                Access comprehensive mechanical engineering designs, heat exchanger sizing sheets, and turnkey zero liquid discharge process validation parameters.
               </p>
             </div>
 
-            <div className="shrink-0 w-full md:w-auto flex flex-col gap-3">
+            {/* Responsive Download Grid Layout */}
+            <div className="grid gap-4 sm:grid-cols-3 pt-2">
+              
+              {/* Document 1: Company Profile */}
               <a
                 href="/Companyprofile_thermovap.pdf"
                 download
-                className="flex h-11 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors w-full md:w-auto"
+                className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-background p-4 shadow-xs hover:border-primary/40 hover:bg-muted/30 transition-all text-left"
               >
-                <FileDown className="h-4 w-4" />
-                Download Company Profile
+                <div className="space-y-1">
+                  <p className="text-xs font-bold text-card-foreground">Company Profile</p>
+                  <p className="text-[11px] text-muted-foreground">Corporate summary & leadership</p>
+                </div>
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground group-hover:scale-105 transition-transform">
+                  <FileDown className="h-4 w-4" />
+                </span>
               </a>
 
+              {/* Document 2: E-Brochure */}
               <a
                 href="/E-Brochure_Thermovap.pdf"
                 download
-                className="flex h-11 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors w-full md:w-auto"
+                className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-background p-4 shadow-xs hover:border-primary/40 hover:bg-muted/30 transition-all text-left"
               >
-                <FileDown className="h-4 w-4" />
-                Download E-Brochure
+                <div className="space-y-1">
+                  <p className="text-xs font-bold text-primary">Technical E-Brochure</p>
+                  <p className="text-[11px] text-muted-foreground">System schematics & plant ratings</p>
+                </div>
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground group-hover:scale-105 transition-transform">
+                  <FileDown className="h-4 w-4" />
+                </span>
               </a>
 
+              {/* Document 3: Project Portfolio */}
               <a
                 href="/Portfolio_thermovap.pdf"
                 download
-                className="flex h-11 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors w-full md:w-auto"
+                className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-background p-4 shadow-xs hover:border-primary/40 hover:bg-muted/30 transition-all text-left"
               >
-                <FileDown className="h-4 w-4" />
-                Download Portfolio
+                <div className="space-y-1">
+                  <p className="text-xs font-bold text-card-foreground">Engineering Portfolio</p>
+                  <p className="text-[11px] text-muted-foreground">Case studies & installed MEE metrics</p>
+                </div>
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground group-hover:scale-105 transition-transform">
+                  <FileDown className="h-4 w-4" />
+                </span>
               </a>
+
             </div>
           </div>
         </Reveal>
