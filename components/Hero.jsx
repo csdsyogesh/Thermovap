@@ -60,7 +60,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-4 py-1.5 text-xs font-semibold tracking-widest text-primary uppercase"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            Process Engineering &amp; Superior consultancing
+            Pioneering Sustainable Thermal Engineering &amp; ZLD Solutions
           </motion.span>
 
           <motion.h1
