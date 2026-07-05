@@ -121,7 +121,9 @@ export function Hero() {
         >
           <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-border sm:aspect-[4/4.2]">
             <img
-              src="/hero-plant.png"
+              src="/hero-plant.webp"
+              loading="eager"
+              fetchpriority="high"
               alt="Industrial stainless steel evaporation plant"
               className="absolute inset-0 h-full w-full object-cover"
             />

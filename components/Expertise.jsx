@@ -35,14 +35,16 @@ export function Expertise() {
   return (
     <section id="expertise" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
-        
+
         {/* Main Grid Section */}
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal className="order-2 lg:order-1">
             <div className="relative">
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border">
                 <img
-                  src="/expertise.png"
+                  src="/expertise.webp"
+                  loading="eager"
+                  fetchpriority="high"
                   alt="Stainless steel heat exchanger and process piping"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -89,8 +91,8 @@ export function Expertise() {
                     whileHover={{ y: -4 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                   >
-                    <Link 
-                      to={f.href} 
+                    <Link
+                      to={f.href}
                       className="group flex h-full gap-4 rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary/50 cursor-pointer"
                     >
                       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/12 text-primary transition-transform group-hover:scale-110">
