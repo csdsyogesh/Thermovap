@@ -1,16 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, BarChart3, ShieldAlert, Zap, Layers } from 'lucide-react';
-// 🌟 IMPORT THE SEO WRAPPER COMPONENT
+import { ArrowLeft, HelpCircle, CheckCircle2, Cpu, BarChart3, ShieldAlert } from 'lucide-react';
 import { SEO } from '../SEO'; 
 
 export default function Falling() {
   return (
     <>
-      {/* 🌟 GOOGLE CORE INDEXING METRICS */}
+      {/* GOOGLE CORE INDEXING METRICS */}
       <SEO 
         title="Falling Film Evaporators" 
-        description="High-efficiency vertical gravity climbing-film calendria bundles engineered for heat-sensitive food, dairy, and chemical concentration lines with optimal steam economy."
+        description="High-efficiency vertical gravity climbing-film calandria bundles engineered for heat-sensitive food, dairy, and chemical concentration lines with optimal steam economy."
         url="/thermproject/falling"
       />
 
@@ -53,10 +52,10 @@ export default function Falling() {
               </h2>
               <div className="space-y-4 text-muted-foreground text-sm leading-relaxed text-justify">
                 <p>
-                  A Falling Film Evaporator is an industrial shell-and-tube heat exchanger engineered to concentrate solutions by boiling off a volatile solvent (typically water) from a dilute feed. The defining feature of this technology is that the process fluid enters from the very top header of the calendria. It is routed through a specialized, highly precise liquid distribution system that splits the stream evenly across the tube sheet, creating a uniform, continuous thin liquid film that flows downward along the internal tube walls under the force of gravity.
+                  A Falling Film Evaporator is an industrial shell-and-tube heat exchanger engineered to concentrate solutions by boiling off a volatile solvent (typically water) from a dilute feed. The defining feature of this technology is that the process fluid enters from the very top header of the calandria. It is routed through a specialized, highly precise liquid distribution system that splits the stream evenly across the tube sheet, creating a uniform, continuous thin liquid film that flows downward along the internal tube walls under the force of gravity.
                 </p>
                 <p>
-                  As the liquid film tracks downward, it absorbs latent heat from the heating medium (such as live steam or recycled vapor) passing through the shell side. This triggers rapid boiling, causing partial vaporization of the solvent. The vapor generated travels concurrently down the center core of the tubes alongside the liquid film. At the base of the calendria bundle, the co-current mixture discharges into a massive vapor-liquid separator chamber where the dense concentrate drops out cleanly while the clean vapor stream is pulled from the top header for enthalpy recovery.
+                  As the liquid film tracks downward, it absorbs latent heat from the heating medium (such as live steam or recycled vapor) passing through the shell side. This triggers rapid boiling, causing partial vaporization of the solvent. The vapor generated travels concurrently down the center core of the tubes alongside the liquid film. At the base of the calandria bundle, the co-current mixture discharges into a massive vapor-liquid separator chamber where the dense concentrate drops out cleanly while the clean vapor stream is pulled from the top header for enthalpy recovery.
                 </p>
               </div>
             </section>
@@ -76,7 +75,7 @@ export default function Falling() {
                   <ShieldAlert className="text-primary h-5 w-5" /> Key Thermodynamic Benefits
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed text-justify">
-                  Falling Film systems operate by holding process temperatures below **55°C** and optimizing the shell heating side and the boiling fluid side. This low driving force requirement makes them ideal for multi-stage configurations, allowing many effects to be stacked sequentially to maximize steam economy. Furthermore, the absence of a large liquid hydrostatic head reduces boiling point elevations ($BPE$) within the tubes, requiring lower capital energy outlays compared to standard flooded or rising-film evaporators.
+                  Falling Film systems operate by holding process temperatures below 55°C and optimizing the shell heating side and the boiling fluid side. This low driving force requirement makes them ideal for multi-stage configurations, allowing many effects to be stacked sequentially to maximize steam economy. Furthermore, the absence of a large liquid hydrostatic head reduces boiling point elevations (BPE) within the tubes, requiring lower capital energy outlays compared to standard flooded or rising-film evaporators.
                 </p>
               </div>
             </section>
@@ -123,7 +122,7 @@ export default function Falling() {
                   },
                   { 
                     q: "What viscosity limits apply to standard Falling Film Evaporators?", 
-                    a: "They operate best with low-to-medium viscosity fluids, typically below 100 to 150 cP. As viscosity rises, the gravity film becomes thicker and moves slower, which drops the convective heat transfer coefficient ($U$) and prompts scaling." 
+                    a: "They operate best with low-to-medium viscosity fluids, typically below 100 to 150 cP. As viscosity rises, the gravity film becomes thicker and moves slower, which drops the convective heat transfer coefficient (U) and prompts scaling." 
                   },
                   { 
                     q: "How does the lack of hydrostatic head lower operational energy costs?", 
@@ -131,7 +130,7 @@ export default function Falling() {
                   },
                   { 
                     q: "Can Falling Film units be combined with Mechanical Vapor Recompression (MVR)?", 
-                    a: "Yes. In fact, their low required temperature difference ($\\Delta T = 4^\\circ\\text{C}-6^\\circ\\text{C}$) makes them perfectly suited for MVR integration. The mechanical compressor only needs to add a small amount of energy to step up the vapor temperature before reintroducing it to the shell side." 
+                    a: "Yes. In fact, their low required temperature difference (Delta-T = 4°C - 6°C) makes them perfectly suited for MVR integration. The mechanical compressor only needs to add a small amount of energy to step up the vapor temperature before reintroducing it to the shell side." 
                   },
                   { 
                     q: "What typical steam economy values are reached in multi-effect systems?", 
@@ -143,7 +142,7 @@ export default function Falling() {
                   },
                   { 
                     q: "What materials of construction (MOC) are used for corrosive configurations?", 
-                    a: "Based on fluid chemistry, we manufacture configurations using SS304L, SS316L, Duplex Stainless Steel (e.g., 2205), or Titanium to completely mitigate chloride stress cracking or aggressive corrosion." 
+                    a: "Based on fluid chemistry, we manufacture configurations using SS304L, SS316L, Duplex Stainless Steel (such as alloy 2205), or Titanium to completely mitigate chloride stress cracking or aggressive corrosion." 
                   },
                   { 
                     q: "How is Clean-in-Place (CIP) handled in these configurations?", 
@@ -152,6 +151,10 @@ export default function Falling() {
                   { 
                     q: "What steps prevent droplet entrainment in the separated vapor line?", 
                     a: "The lower discharge chamber uses an engineered centrifugal wrap design. The heavy liquid drops slide along the walls, while the rising vapor passes through a multi-tier structural chevron or mesh demister block to trap remaining micro-droplets." 
+                  },
+                  {
+                    q: "What is the function of the bottom liquor recirculation loop in these installations?",
+                    a: "When operating parameters fluctuate or feed rates fall below design thresholds, a dedicated recirculation loop maintains the minimum wetting rate inside the calandria tubes, stopping thin film breakage and dry spot formation."
                   }
                 ].map((faq, idx) => (
                   <div key={idx} className="bg-card p-6 rounded-xl border border-border">
@@ -169,7 +172,7 @@ export default function Falling() {
           </main>
         </div>
 
-        {/* Footer Block */}
+        /* Footer Block */
         <footer className="bg-card border-t border-border mt-20 py-8 text-center text-sm text-muted-foreground">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p>© {new Date().getFullYear()} Thermovap Engineering. All rights reserved.</p>

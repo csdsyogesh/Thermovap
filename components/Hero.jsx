@@ -67,8 +67,8 @@ export function Hero() {
             variants={item}
             className="mt-6 text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
           >
-            Designing high-efficiency
-            <span className="text-primary"> thermal evaporation</span> for a
+            Designing high-efficiency thermal
+            <span className="text-primary">  Evaporators & Dryers</span> for a
             modern manufacturing
           </motion.h1>
 

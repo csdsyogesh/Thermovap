@@ -23,8 +23,9 @@ const NAV = [
   { label: 'Expertise', href: '/#expertise' },
   { label: 'Projects', href: '/#projects' },
   { label: 'Industries', href: '/#industries' },
-  { label: 'Contact', href: '/#contact' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/#contact' },
+  
 ]
 
 export function SiteHeader() {

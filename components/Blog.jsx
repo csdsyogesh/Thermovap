@@ -124,17 +124,7 @@ export default function BlogHub() {
 
       </div>
 
-      {/* Footer Block */}
-      <footer className="bg-card border-t border-border mt-20 py-8 text-center text-sm text-muted-foreground">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} Thermovap Engineering. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
-            <a href="/#services" className="hover:text-primary transition-colors">Services</a>
-            <a href="/#contact" className="hover:text-primary transition-colors">Contact</a>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   );
 }
